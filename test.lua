@@ -4,3 +4,9 @@
 print("helloWorld")
 
 print("helloWorld Again!")
+
+print("yet another line")
+
+if i=1,5 do
+  print(i)
+end
