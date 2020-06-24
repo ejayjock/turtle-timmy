@@ -164,6 +164,7 @@ end
 if argsIn[1] == nil then
   print("argsIn[1]= ",argsIn[1])
   branch = defBranch
+  movForward=io.read()
 else
   branch = argsIn[1]
 end
