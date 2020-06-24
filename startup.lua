@@ -165,9 +165,9 @@ shell.run("rm downloads")
 parseInput( gUser, gRepo, nil, nil, branch)
 
 -- Remove the startup.lua script, copy contents of dl directory, and rm downloads
-if fs.exists("downloads",gRepo,"startup.lua") then
+if fs.exists("downloads"..gRepo.."startup.lua") then
   shell.run("rm startup.lua")
-  shell.run("cp downloads/",gRepo,"/* .")
+  shell.run("cp downloads/"..gRepo.."/* .")
   shell.run("rm downloads")
 else
   print("Error in syncing gitHub Repo.")
