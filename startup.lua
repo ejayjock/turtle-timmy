@@ -162,6 +162,7 @@ function parseInput( user, repo , dldir, path, branch )
 end
 
 if argsIn[1] == nil then
+  print("argsIn[1]= ",argsIn[1])
   branch = defBranch
 else
   branch = argsIn[1]
