@@ -160,7 +160,7 @@ function parseInput( user, repo , dldir, path, branch )
         end
 end
 
-if argsIn[1] == nil then
+if tArgs[1] == nil then
   branch = gBranch
 else
   branch = tArgs[1]
