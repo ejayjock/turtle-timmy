@@ -19,7 +19,7 @@ local blackList = [[
 @blacklistedfile
 ]]
 
-local title = "Github Repo Downloader"
+local title = "Github Repo Downloader "
 local fileList = {dirs={},files={}}
 local x , y = term.getSize()
 
