@@ -3,7 +3,7 @@ computercraft turtle.  ]]--
 
 local argsIn = {...}
 local gUser = "ejayjock"
-local gRepo = "timmy"
+local gRepo = "turtle-timmy"
 local defBranch = "master"
 local gBranch, gPath
 
