@@ -161,7 +161,7 @@ end
 -- Clean the file space for everything except startup.Language
 function rmExcept(exception)
   files=fs.list(".")
-  for i = 1, #files
+  for i = 1, #files do
     if files[i] ~= exception then
       shell.run("rm "..files[i])
     end
