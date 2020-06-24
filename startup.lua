@@ -169,15 +169,21 @@ function rmExcept(exception)
 end
 
 -- Clean up download space
-shell.run("rm downloads")
+if fs.exists("/downloads") then
+  print("Removing previously existing downloads directory.")
+  shell.run("rm downloads")
+end
 
 -- Import Code From Github
 parseInput( gUser, gRepo, nil, nil, branch)
 
 -- Remove the startup.lua script, copy contents of dl directory, and rm downloads
 if fs.exists("downloads/"..gRepo.."/startup.lua") then
+  print("Sync Complete...Cleaning the file space")
   rmExcept("downloads")
+  print("Moving files from downloaded gitHub folder to root")
   shell.run("cp downloads/"..gRepo.."/* .")
+  print("Removing the downloads folder")
   shell.run("rm downloads")
 else
   print("Error in syncing gitHub Repo.")
