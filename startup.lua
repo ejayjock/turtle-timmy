@@ -167,6 +167,8 @@ else
   branch = tArgs[1]
 end
 
+print("Branch is: ", branch)
+sleep(10)
 parseInput( gUser, gRepo, nil, nil, branch)
 
 --
