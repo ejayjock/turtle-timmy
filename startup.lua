@@ -1,12 +1,9 @@
---[[ Code to pull down all files from the master repository for each
-computercraft turtle.  ]]--
+--[[ Script cleans all local files and syncs with github repository]]--
 
-local tArgs = {...}
 local gUser = "ejayjock"
 local gRepo = "turtle-timmy"
 local gBranch = "master"
 local gPath=""
-
 
 local usage = [[
  github <user> <repo> [path] [remote path] [branch]
@@ -161,25 +158,9 @@ function parseInput( user, repo , dldir, path, branch )
         end
 end
 
-if tArgs[1] == nil then
-  branch = gBranch
-else
-  branch = tArgs[1]
-end
 
-print("Branch is: ", branch)
-sleep(10)
+-- Clean up download space
+shell.run("rm *")
+
+-- Import Code From Github
 parseInput( gUser, gRepo, nil, nil, branch)
-
---
--- if not http then
---         writeCenter("You need to enable the HTTP API!")
---         sleep(3)
---         term.clear()
---         term.setCursorPos(1,1)
--- else
---         for i=1, 5, 1 do
---                 if tArgs[i] == "." then tArgs[i] = nil end
---         end
---         parseInput( tArgs[1], tArgs[2], tArgs[3], tArgs[4], tArgs[5] )
--- end
