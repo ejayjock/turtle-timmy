@@ -1,13 +1,12 @@
 --[[ Code to pull down all files from the master repository for each
 computercraft turtle.  ]]--
 
-local argsIn = {...}
+local tArgs = {...}
 local gUser = "ejayjock"
 local gRepo = "turtle-timmy"
-local defBranch = "master"
-local gBranch, gPath
+local gBranch = "master"
 
---local tArgs, gUser, gRepo, gPath, gBranch = {...}, nil, nil, "", "master"
+
 local usage = [[
  github <user> <repo> [path] [remote path] [branch]
  Remote path defaults to the root of the repo.
@@ -162,11 +161,9 @@ function parseInput( user, repo , dldir, path, branch )
 end
 
 if argsIn[1] == nil then
-  print("argsIn[1]= ",argsIn[1])
-  branch = defBranch
-  movForward=io.read()
+  branch = gBranch
 else
-  branch = argsIn[1]
+  branch = tArgs[1]
 end
 
 parseInput( gUser, gRepo, nil, nil, branch)
