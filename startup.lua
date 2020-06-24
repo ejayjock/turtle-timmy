@@ -159,16 +159,16 @@ function parseInput( user, repo , dldir, path, branch )
 end
 
 -- Clean up download space
-os.run("rm downloads")
+shell.run("rm downloads")
 
 -- Import Code From Github
 parseInput( gUser, gRepo, nil, nil, branch)
 
 -- Remove the startup.lua script, copy contents of dl directory, and rm downloads
 if fs.exists("downloads",gRepo,"startup.lua") then
-  os.run("rm startup.lua")
-  os.run("cp downloads/",gRepo,"/* .")
-  os.run("rm downloads")
+  shell.run("rm startup.lua")
+  shell.run("cp downloads/",gRepo,"/* .")
+  shell.run("rm downloads")
 else
   print("Error in syncing gitHub Repo.")
 end
