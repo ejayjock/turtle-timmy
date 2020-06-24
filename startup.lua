@@ -162,7 +162,7 @@ end
 function rmExcept(exception)
   files=fs.list(".")
   for i = 1, #files do
-    if files[i] ~= exception then
+    if files[i] ~= exception or files[i] ~= "rom" then
       shell.run("rm "..files[i])
     end
   end
