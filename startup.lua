@@ -158,6 +158,16 @@ function parseInput( user, repo , dldir, path, branch )
         end
 end
 
+-- Clean the file space for everything except startup.Language
+function rmExcept(exception)
+  files=fs.list(".")
+  for i = 1, #files
+    if files[i] ~= exception then
+      shell.run("rm "..files[i])
+    end
+  end
+end
+
 -- Clean up download space
 shell.run("rm downloads")
 
@@ -166,7 +176,7 @@ parseInput( gUser, gRepo, nil, nil, branch)
 
 -- Remove the startup.lua script, copy contents of dl directory, and rm downloads
 if fs.exists("downloads/"..gRepo.."/startup.lua") then
-  shell.run("rm startup.lua")
+  rmExcept("downloads")
   shell.run("cp downloads/"..gRepo.."/* .")
   shell.run("rm downloads")
 else
