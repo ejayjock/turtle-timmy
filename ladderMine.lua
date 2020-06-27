@@ -16,7 +16,7 @@ local fillSlot=16
 
 -- Request how deep the ladder mine should be dug
 print("How many blocks deep would the mine be?")
-nDeep=io.read()
+nDeep=tonumber(io.read())
 
 -- Confirm input depth is a proper positive number
 assert(type(nDeep) == "number","Mine depth must be a number")
