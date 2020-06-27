@@ -1,4 +1,4 @@
---[[ script laddermine.lua Rev05 ]]
+--[[ script laddermine.lua Rev06 ]]
 --[[ The purpose of this script is to use a turtle to dig a mine 2x1 mineshaft down straight down, leaving a ladder behind and spacing torches once every 4 levels to provide light.]]
 --[[ How to prepare the turtle: ]]
 --[[ The turtle must have a tool in its main (right) hand. It is suggested that tool be tool be a pick ax so the turtle will properly collect what it mines. ]]
@@ -24,8 +24,18 @@ assert(nDeep>0,"Mine depth must be > then 0")
 
 -- Check to make sure there is enough ladders in slots 1 and 2
 -- first, do ladders exist in slots 1 or two
-ladderSlot1=turtle.getItemDetail(1).name == "minecraft:ladder"
-ladderSlot2=turtle.getItemDetail(2).name == "minecraft:ladder"
+
+if turtle.getItemCount(1)~=0 then
+  ladderSlot1=turtle.getItemDetail(1).name == "minecraft:ladder"
+else
+  ladderSlot1=false
+end
+
+if turtle.getItemCount(2)~=0 then
+  ladderSlot2=turtle.getItemDetail(2).name == "minecraft:ladder"
+else
+  ladderSlot2=false
+end
 assert(ladderSlot1 or ladderSlot2,"Turtle must have ladders in slots 1 or 2")
 
 -- count ladders present in slot 1 and 2
