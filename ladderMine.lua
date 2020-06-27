@@ -34,7 +34,7 @@ if ladderSlot1 then nLadders=nLadders+turtle.getItemDetails.number(1) end
 if ladderSlot2 then nLadders=nLadders+turtle.getItemDetails.number(2) end
 
 -- Check to make sure number of ladders is greater then depth of the mines
-assert(nLadders>=nDeep,"Only "...nLadders..." found in inventory. Turtle must have at least as many ladders as the mine is deep.")
+assert(nLadders>=nDeep,"Only "..nLadders.." found in inventory. Turtle must have at least as many ladders as the mine is deep.")
 
 -- Check that slot 16 has something
 
@@ -78,7 +78,7 @@ function selectItem(itemName)
     end
     i=i+1
     if i>16 then
-      print("Warning Item "...itemNamecont..." not found in inventory!")
+      print("Warning Item "..itemNamecont.." not found in inventory!")
       cont = false
     end
   end
