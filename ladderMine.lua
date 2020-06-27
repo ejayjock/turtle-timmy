@@ -110,18 +110,20 @@ for i = 1,nDeep do
   fillGaps()
 
   -- Put in the ladder for this level
-  turtle.turnRight()
   selectItem("minecraft:ladder")
   turtle.place()
-  turtle.turnLeft()
 
   turtle.forward()
+  turtle.turnLeft() turtle.turnLeft()
+  fillGaps()
   if math.fmod(nDug,nTourch)==0 then
     selectItem("minecraft:torch")
     turtle.place()
   end
-  turtle.turnLeft() turtle.turnLeft()
-  fillGaps()
+
+  turtle.forward()
+  turtle.turnLeft()
+  turtle.turnLeft()
 
   turtle.down()
   nDug=nDug+1
