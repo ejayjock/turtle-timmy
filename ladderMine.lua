@@ -54,7 +54,7 @@ function digForward(tHand)
 end
 
 function fill()
-  if ~turtle.detect() then
+  if not(turtle.detect()) then
     turle.select(fillSlot)
     turtle.place()
   end
