@@ -1,4 +1,4 @@
---[[ script laddermine.lua Rev07 ]]
+--[[ script laddermine.lua Rev08 ]]
 --[[ The purpose of this script is to use a turtle to dig a mine 2x1 mineshaft down straight down, leaving a ladder behind and spacing torches once every 4 levels to provide light.]]
 --[[ How to prepare the turtle: ]]
 --[[ The turtle must have a tool in its main (right) hand. It is suggested that tool be tool be a pick ax so the turtle will properly collect what it mines. ]]
@@ -88,7 +88,7 @@ function selectItem(itemName)
     end
     i=i+1
     if i>16 then
-      print("Warning Item "..itemNamecont.." not found in inventory!")
+      print("Warning Item "..itemName.." not found in inventory!")
       cont = false
     end
   end
