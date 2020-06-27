@@ -1,4 +1,4 @@
---[[ script laddermine.lua Rev02 ]]
+--[[ script laddermine.lua Rev03 ]]
 --[[ The purpose of this script is to use a turtle to dig a mine 2x1 mineshaft down straight down, leaving a ladder behind and spacing torches once every 4 levels to provide light.]]
 --[[ How to prepare the turtle: ]]
 --[[ The turtle must have a tool in its main (right) hand. It is suggested that tool be tool be a pick ax so the turtle will properly collect what it mines. ]]
