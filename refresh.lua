@@ -3,5 +3,7 @@
 local turtleName = "timmy"
 local gUser = "ejayjock"
 
-github clone ejayjock/turtle-timmy -a ejayjock
+/github.rom/program/github clone ejayjock/turtle-timmy -a ejayjock
+shell.run("rm /startup.lua")
+shell.run("mv turtle-timmy/startup.lua /startup.lua")
 shell.run("cd turtle-timmy")
