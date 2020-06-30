@@ -1,4 +1,4 @@
---[[ script laddermine.lua Rev11 ]]
+--[[ script laddermine.lua Rev12 ]]
 --[[ The purpose of this script is to use a turtle to dig a mine 3x1 mineshaft straight down, leaving a ladder behind and spacing torches once every 4 levels to provide light.]]
 --[[ How to prepare the turtle: ]]
 --[[ The turtle must have a tool in its main (right) hand. It is suggested that tool be tool be a pick ax so the turtle will properly collect what it mines. ]]
@@ -80,7 +80,7 @@ function fill()
 end
 
 function fillGaps(option)
-  if option==nil or option="end" then
+  if option==nil or option=="end" then
     for i=1,3 do
       turtle.turnLeft()
       fill()
