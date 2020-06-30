@@ -1,4 +1,4 @@
---[[ Script cleans all local files and syncs with github repository]]--
+--[[ Rev 01 Script cleans all local files and syncs with github repository]]--
 
 local turtleName = "timmy"
 local gUser = "ejayjock"
