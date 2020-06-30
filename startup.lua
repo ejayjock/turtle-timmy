@@ -1,4 +1,4 @@
-tName="timmy"
+local tName="timmy"
 -- Switch into turtle directory
 shell.run("cd /turtle-"..tName)
 
