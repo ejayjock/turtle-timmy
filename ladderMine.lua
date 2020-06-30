@@ -37,13 +37,13 @@ if turtle.getItemCount(2)~=0 then
 else
   ladderSlot2=false
 end
-print('turtle found '..laderSlots..' ladders in inventory.')
 assert(ladderSlot1 or ladderSlot2,"Turtle must have ladders in slots 1 or 2")
 
 -- count ladders present in slot 1 and 2
 nLadders=0;
 if ladderSlot1 then nLadders=nLadders+turtle.getItemCount(1) end
 if ladderSlot2 then nLadders=nLadders+turtle.getItemCount(2) end
+print('turtle found '..nLadders..' ladders in inventory.')
 
 -- Check to make sure number of ladders is greater then depth of the mines
 assert(nLadders>=nDeep,"Only "..nLadders.." found in inventory. Turtle must have at least as many ladders as the mine is deep.")
