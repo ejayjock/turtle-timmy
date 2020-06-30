@@ -86,12 +86,15 @@ function fillGaps(option)
       fill()
     end
     turtle.turnLeft()
-  elseif option=="center"
+  elseif option=="center" then
     turtle.turnLeft()
     fill()
     turtle.turnLeft() turtle.turnLeft()
     fill()
     turtle.turnLeft()
+  else
+    error('Utility function fillGaps needs an option')
+  end
 end
 
 function selectItem(itemName)
