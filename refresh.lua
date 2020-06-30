@@ -3,6 +3,10 @@
 local turtleName = "timmy"
 local gUser = "ejayjock"
 
-/github.rom/program/github clone ejayjock/turtle-timmy -a ejayjock
+local gitRunCmd="/github.rom/program/github"
+local gitArgs=" clone ejayjock/turtle-"..turtleName.." -a "..gUser
+
+shell.run(gitRunCmd..gitArgs)
+
 --shell.run("rm /startup.lua")
 --shell.run("mv turtle-timmy/startup.lua /startup.lua")
