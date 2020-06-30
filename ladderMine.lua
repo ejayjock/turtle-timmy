@@ -1,5 +1,5 @@
 --[[ script laddermine.lua Rev11 ]]
---[[ The purpose of this script is to use a turtle to dig a mine 2x1 mineshaft down straight down, leaving a ladder behind and spacing torches once every 4 levels to provide light.]]
+--[[ The purpose of this script is to use a turtle to dig a mine 3x1 mineshaft straight down, leaving a ladder behind and spacing torches once every 4 levels to provide light.]]
 --[[ How to prepare the turtle: ]]
 --[[ The turtle must have a tool in its main (right) hand. It is suggested that tool be tool be a pick ax so the turtle will properly collect what it mines. ]]
 --[[ The turtle should have ladders in inventory spots 1, 2 ]]
@@ -13,6 +13,7 @@ local tHand="right"
 local nDug=0
 local nTourch=4
 local fillSlot=16
+local digVal=0
 
 -- Request how deep the ladder mine should be dug
 print("How many blocks deep would the mine be?")
@@ -36,6 +37,7 @@ if turtle.getItemCount(2)~=0 then
 else
   ladderSlot2=false
 end
+print('turtle found '..laderSlots..' ladders in inventory.')
 assert(ladderSlot1 or ladderSlot2,"Turtle must have ladders in slots 1 or 2")
 
 -- count ladders present in slot 1 and 2
@@ -60,7 +62,14 @@ end
 
 function digForward(tHand)
   if tHand==nil then tHand="right" end
-  if turtle.detect() then turtle.dig(tHand) end
+  itr=true
+  while true do
+    if turtle.detect() then
+      turtle.dig(tHand)
+    else
+      itr=false
+    end
+  end
 end
 
 function fill()
@@ -70,12 +79,19 @@ function fill()
   end
 end
 
-function fillGaps()
-  for i=1,3 do
+function fillGaps(option)
+  if option==nil or option="end" then
+    for i=1,3 do
+      turtle.turnLeft()
+      fill()
+    end
+    turtle.turnLeft()
+  elseif option=="center"
     turtle.turnLeft()
     fill()
-  end
-  turtle.turnLeft()
+    turtle.turnLeft() turtle.turnLeft()
+    fill()
+    turtle.turnLeft()
 end
 
 function selectItem(itemName)
@@ -94,39 +110,46 @@ function selectItem(itemName)
   end
 end
 
-
+-- Turtle Minecode
 -- Ready the Turtle
 digDown()
 turtle.down()
-nDug=nDug+1
+if turtle.down()==true then digVal = 1 else digVal = 0 end
+nDug=nDug+digVal
 
 -- Loop through instructions for each level of the mine
+local itourch=1
 for i = 1,nDeep do
   -- Clear space under turtle and in front of turtle
   digDown()
   digForward()
-
-  -- Replace any missing blocks on the exterior
-  fillGaps()
+  turtle.forward()
+  fillGaps('end') -- Replace any missing blocks on the exterior
 
   -- Put in the ladder for this level
+  turle.back()
   selectItem("minecraft:ladder")
   turtle.place()
 
-  turtle.forward()
   turtle.turnLeft() turtle.turnLeft()
-  fillGaps()
-  if math.fmod(nDug,nTourch)==0 then
+
+  digForward()
+  turtle.forward()
+  fillGaps('end')
+
+  turtle.back()
+  if itourch==nTourch then
     selectItem("minecraft:torch")
     turtle.place()
+    itourch=0
   end
 
-  turtle.forward()
-  turtle.turnLeft()
-  turtle.turnLeft()
+  turtle.turnLeft() turtle.turnLeft()
 
-  turtle.down()
-  nDug=nDug+1
+  if turtle.down()==true then digVal = 1 else digVal = 0 end
+  fillGaps('center')
+  nDug=nDug+digVal
+  itouch=itouch+1
 end
 
 for i=1,nDeep do
