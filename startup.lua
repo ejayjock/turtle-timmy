@@ -1,7 +1,9 @@
-local tName="timmy"
-local gUser=
-local repoOwner=
+tName="timmy"
+-- Switch into turtle directory
+shell.run("cd /turtle-"..tName)
 
--- check if github.rom and github exist, if not run pastebin get p8PJVxC4  if yes do nothing.
-
--- Clear the screen, change into the turtle directory and display a welcome message, to sync with gitHub type refresh at anytime.
+-- Clear screen and print welcome message:
+term.clear()
+print("Hello, "..tName.." the turtle at your service!")
+print(" ")
+print("Type refresh anytime to sync me with gitHub.")
