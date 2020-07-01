@@ -63,7 +63,7 @@ end
 function digForward(tHand)
   if tHand==nil then tHand="right" end
   itr=true
-  while true do
+  while itr do
     if turtle.detect() then
       turtle.dig(tHand)
     else
