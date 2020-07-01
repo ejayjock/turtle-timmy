@@ -81,11 +81,13 @@ end
 
 function fillGaps(option)
   if option==nil or option=="end" then
-    for i=1,3 do
-      turtle.turnLeft()
-      fill()
-    end
+    turtle.turnRight()
+    fill()
     turtle.turnLeft()
+    fill()
+    turtle.turnLeft()
+    fill()
+    turtle.turnRight()
   elseif option=="center" then
     turtle.turnLeft()
     fill()
