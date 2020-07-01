@@ -74,7 +74,7 @@ end
 
 function fill()
   if not(turtle.detect()) then
-    turle.select(fillSlot)
+    turtle.select(fillSlot)
     turtle.place()
   end
 end
