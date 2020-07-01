@@ -103,7 +103,7 @@ function selectItem(itemName)
   local cont=true
   local i=1
   while cont do
-    if turtle.getItemDetail(1).name==itemName then
+    if turtle.getItemDetail(i).name==itemName then
       turtle.select(i)
       cont=false
     end
