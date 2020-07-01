@@ -132,7 +132,7 @@ for i = 1,nDeep do
   fillGaps('end') -- Replace any missing blocks on the exterior
 
   -- Put in the ladder for this level
-  turle.back()
+  turtle.back()
   print("Placing Ladder #: ")
   selectItem("minecraft:ladder")
   turtle.place()
