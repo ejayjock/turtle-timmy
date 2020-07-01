@@ -115,6 +115,7 @@ end
 
 -- Turtle Minecode
 -- Ready the Turtle
+print("Making Turtle Ready")
 digDown()
 turtle.down()
 if turtle.down()==true then digVal = 1 else digVal = 0 end
@@ -123,6 +124,7 @@ nDug=nDug+digVal
 -- Loop through instructions for each level of the mine
 local itourch=1
 for i = 1,nDeep do
+  print("looping: iteration #: "..i)
   -- Clear space under turtle and in front of turtle
   digDown()
   digForward()
@@ -131,6 +133,7 @@ for i = 1,nDeep do
 
   -- Put in the ladder for this level
   turle.back()
+  print("Placing Ladder #: ")
   selectItem("minecraft:ladder")
   turtle.place()
 
