@@ -122,7 +122,7 @@ if turtle.down()==true then digVal = 1 else digVal = 0 end
 nDug=nDug+digVal
 
 -- Loop through instructions for each level of the mine
-local itourch=1
+local itorch=1
 for i = 1,nDeep do
   print("looping: iteration #: "..i)
   -- Clear space under turtle and in front of turtle
@@ -144,10 +144,10 @@ for i = 1,nDeep do
   fillGaps('end')
 
   turtle.back()
-  if itourch==nTourch then
+  if itorch==nTourch then
     selectItem("minecraft:torch")
     turtle.place()
-    itourch=0
+    itorch=0
   end
 
   turtle.turnLeft() turtle.turnLeft()
@@ -155,7 +155,7 @@ for i = 1,nDeep do
   if turtle.down()==true then digVal = 1 else digVal = 0 end
   fillGaps('center')
   nDug=nDug+digVal
-  itouch=itouch+1
+  itorch=itorch+1
 end
 
 for i=1,nDeep do
