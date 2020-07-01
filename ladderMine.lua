@@ -104,6 +104,7 @@ function selectItem(itemName)
   local i=1
   while cont do
     if turtle.getItemDetail(i).name==itemName then
+      print("Slot Number "..i.." contains "..turtle.getItemDetail(i).name)
       turtle.select(i)
       cont=false
     end
