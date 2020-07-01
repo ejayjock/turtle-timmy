@@ -160,7 +160,7 @@ for i = 1,nDeep do
   itorch=itorch+1
 end
 
-for i=1,nDeep do
+for i=1,nDug do
   turtle.up()
 end
 
