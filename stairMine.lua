@@ -10,13 +10,13 @@ Series of turtle commands:
   - move forward ]]
 
 for i=1,5 do
-  turtle.digUp()
+  clear('up')
   turtle.up()
-  turtle.digUp() -- This will be a problem
+  clear('up')
   turtle.down()
   turtle.digDown()
   turtle.down()
-  turtle.dig()  -- This is where sand is causing a problem.
+  clear()
   turtle.forward()
 end
 
