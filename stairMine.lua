@@ -24,8 +24,6 @@ end
 function clear(direction,hand)
 usageStatment="function clear(direction,hand) will dig in the direction specified in the input, using the tool found in the turtle hand until the specified space is empty. Direction may be 'up','down','forward'. If no direction is inut forward will be assumed. Variable hand must be 'left' or 'right'. If hand is omitted it will default to the tool in the right hand".
 
--- todo: put in a bedrock check.
-
   args={...};
 
   if args[2] == nil then
