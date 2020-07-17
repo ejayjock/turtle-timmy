@@ -36,7 +36,7 @@ function clear(direction)
   cont=true
   if direction == nil or direction == 'forward' then
     -- Loop to interate until space in front of turtle is clear
-    while cont
+    while cont do
       if turtle.detect() then
         turtle.dig()
       else
@@ -45,7 +45,7 @@ function clear(direction)
     end
   elseif direction == 'up' then
     -- Loop to interate until space in above turtle is clear
-    while cont
+    while cont do
       if turtle.detectUp() then
         turtle.digUp()
       else
@@ -54,7 +54,7 @@ function clear(direction)
     end
   elseif direction == 'down' then
     -- Loop to interate until space in below turtle is clear
-    while cont
+    while cont do
       if turtle.detectDown() then
         turtle.digDown()
       else
