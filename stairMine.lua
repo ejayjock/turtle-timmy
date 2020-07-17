@@ -10,9 +10,9 @@ Series of turtle commands:
   - move forward ]]
 
 for i=1,5 do
-  clear('up')
+  clearUp()
   turtle.up()
-  clear('up')
+  clearUp()
   turtle.down()
   turtle.digDown()
   turtle.down()
@@ -21,47 +21,24 @@ for i=1,5 do
 end
 
 -- Utility Functions
-function clear(direction,hand)
-usageStatment="function clear(direction,hand) will dig in the direction specified in the input, using the tool found in the turtle hand until the specified space is empty. Direction may be 'up','down','forward'. If no direction is inut forward will be assumed. Variable hand must be 'left' or 'right'. If hand is omitted it will default to the tool in the right hand".
-
-  args={...};
-
-  if args[2] == nil then
-    hand='right'
-  elseif args[2]~='left' or args[2]~='right' then
-    error(usageStatment)
-  end
-
+function clearUp()
   cont=true
-  if args[1] == nil or args[1] == 'forward' then
-    -- Loop to interate until space in front of turtle is clear
-    while cont
-      if turtle.detect() then
-        turtle.dig()
-      else
-        cont=false
-      end
+  while cont do
+    if turtle.detectUp() then
+      turtle.digUp()
+    else
+      cont=false
     end
-  elseif args[1] == 'up' then
-    -- Loop to interate until space in above turtle is clear
-    while cont
-      if turtle.detectUp() then
-        turtle.digUp()
-      else
-        cont=false
-      end
-    end
-  elseif args[1] == 'down' then
-    -- Loop to interate until space in below turtle is clear
-    while cont
-      if turtle.detectDown() then
-        turtle.digDown()
-      else
-        cont=false
-      end
-    end
-  else
-    error(usageStatment)
   end
+end
 
+function clear()
+  cont=true
+  while cont do
+    if turtle.detect() then
+      turtle.dig()
+    else
+      cont=false
+    end
+  end
 end
