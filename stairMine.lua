@@ -69,10 +69,10 @@ end
 for i=1,5 do
   clearUp()
   turtle.up()
-  clear('up')
+  clearUp()
   turtle.down()
   turtle.digDown()
   turtle.down()
-  clear()
+  clearForward()
   turtle.forward()
 end
