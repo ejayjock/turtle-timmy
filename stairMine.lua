@@ -33,10 +33,8 @@ function clearForward()
 end
 
 function clear(direction)
-  args={...}
-
   cont=true
-  if args[1] == nil or args[1] == 'forward' then
+  if direction == nil or direction == 'forward' then
     -- Loop to interate until space in front of turtle is clear
     while cont
       if turtle.detect() then
@@ -45,7 +43,7 @@ function clear(direction)
         cont=false
       end
     end
-  elseif args[1] == 'up' then
+  elseif direction == 'up' then
     -- Loop to interate until space in above turtle is clear
     while cont
       if turtle.detectUp() then
@@ -54,7 +52,7 @@ function clear(direction)
         cont=false
       end
     end
-  elseif args[1] == 'down' then
+  elseif direction == 'down' then
     -- Loop to interate until space in below turtle is clear
     while cont
       if turtle.detectDown() then
@@ -64,14 +62,14 @@ function clear(direction)
       end
     end
   else
-    error(usageStatment)
+    error('function clear called incorrectly')
   end
 end
 
 for i=1,5 do
   clearUp()
   turtle.up()
-  clearUp()
+  clear('up')
   turtle.down()
   turtle.digDown()
   turtle.down()
