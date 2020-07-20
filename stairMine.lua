@@ -10,6 +10,7 @@ Series of turtle commands:
   - move forward ]]
 
   -- Utility Functions
+
 function clearUp()
   cont=true
   while cont do
@@ -66,6 +67,13 @@ function clear(direction)
   end
 end
 
+function fillDown()
+  if not turtle.detectDown() then
+    turtle.select(1)
+    turtle.placeDown()
+end
+
+
 for i=1,5 do
   clearUp()
   turtle.up()
@@ -73,6 +81,7 @@ for i=1,5 do
   turtle.down()
   turtle.digDown()
   turtle.down()
+  fillDown()
   clearForward()
   turtle.forward()
 end
