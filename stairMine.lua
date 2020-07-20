@@ -74,8 +74,10 @@ function fillDown()
   end
 end
 
+print("How many blocks deep would the mine be?")
+nDeep=tonumber(io.read())
 
-for i=1,5 do
+for i=1,nDeep do
   clearUp()
   turtle.up()
   clearUp()
