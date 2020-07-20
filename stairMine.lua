@@ -71,6 +71,7 @@ function fillDown()
   if not turtle.detectDown() then
     turtle.select(1)
     turtle.placeDown()
+  end
 end
 
 
