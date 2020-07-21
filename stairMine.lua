@@ -72,6 +72,8 @@ print("Which number slot has filler material")
 iMatLoc=tonumber(io.read())
 fillMatName=turtle.getItemDetail(iMatLoc)
 
+print("Fill Material: "..fillMatName)
+
 -- Stair mining code
 for i=1,nDeep do
   clear('up')
