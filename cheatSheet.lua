@@ -2,17 +2,22 @@
 
 pastebin run xNztvMYg
 
-turtle.detectDown()  -- returns "true" if something is below the turtle
--- other detect commands
-turtle.detect()
-turtle.detectUp()
+-- part one turtle.inspect()
+turtle.inspect()
+turtle.inspectUp()
+turtle.inspectDown()
 
-not turtle.detectDown() -- will return "true" if nothing is below the turtle!
 
-turtle.select(1) -- Selects turtle inventory, in this example it will select from the 1st slot
 
-turtle.placeDown()
-
--- Previous code to add a variable depth location
-print("How many blocks deep would the mine be?")
-nDeep=tonumber(io.read())
+function selectItem(name)
+-- check all inventory slots
+local item
+for slot = 1, 16 do
+  item = turtle.getItemDetail(slot)
+  if item ~= nil and item['name'] == name then
+    turtle.select(slot)
+    return true
+  end
+end
+return false
+end
