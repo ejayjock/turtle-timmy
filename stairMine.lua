@@ -63,15 +63,12 @@ function fillDown(matName)
   end
 end
 
-
-
 print("how deep?")
 nDeep=tonumber(io.read())
 
 print("Which number slot has filler material")
 iMatLoc=tonumber(io.read())
 fillMatName=turtle.getItemDetail(iMatLoc).name
-print("Fill Material: "..fillMatName)
 
 -- Stair mining code
 for i=1,nDeep do
