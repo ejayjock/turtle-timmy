@@ -9,6 +9,19 @@ Series of turtle commands:
   - dig Forward
   - move forward ]]
 
+function selectItem(name)
+  -- check all inventory slots
+  local item
+  for slot = 1, 16 do
+    item = turtle.getItemDetail(slot)
+    if item ~= nil and item['name'] == name then
+      turtle.select(slot)
+      return true
+    end
+  end
+  return false  -- couldn't find item
+end
+
 function clear(direction)
   cont=true
   if direction == nil or direction == 'forward' then
@@ -43,32 +56,21 @@ function clear(direction)
   end
 end
 
-function fillDown(slot)
+function fillDown(matName)
   if not turtle.detectDown() then
-    turtle.select(slot)
+    selectItem(matName)
     turtle.placeDown()
   end
 end
 
-function selectItem(name)
-  -- check all inventory slots
-  local item
-  for slot = 1, 16 do
-    item = turtle.getItemDetail(slot)
-    if item ~= nil and item['name'] == name then
-      turtle.select(slot)
-      return true
-    end
-  end
-  return false  -- couldn't find item
-end
+
 
 print("how deep?")
 nDeep=tonumber(io.read())
 
-print("What material should be used to fill in spaces?")
-mat=io.read()
-nSlot=selectItem(mat)
+print("Which number slot has filler material")
+iMatLoc=tonumber(io.read())
+fillMatName=turtle.getItemDetail(iMatLoc)
 
 -- Stair mining code
 for i=1,nDeep do
@@ -78,7 +80,7 @@ for i=1,nDeep do
   turtle.down()
   turtle.digDown()
   turtle.down()
-  fillDown(nSlot)
+  fillDown(fillMatName)
   clear('forward')
   turtle.forward()
 end
