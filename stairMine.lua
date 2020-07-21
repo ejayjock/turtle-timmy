@@ -9,29 +9,12 @@ Series of turtle commands:
   - dig Forward
   - move forward ]]
 
-  -- Utility Functions
+print("how deep?")
+nDeep=tonumber(io.read())
 
-function clearUp()
-  cont=true
-  while cont do
-    if turtle.detectUp() then
-      turtle.digUp()
-    else
-      cont=false
-    end
-  end
-end
+print("What slot is the fill material in?")
+nSlot=tonumber(io.read())
 
-function clearForward()
-  cont=true
-  while cont do
-    if turtle.detect() then
-      turtle.dig()
-    else
-      cont=false
-    end
-  end
-end
 
 function clear(direction)
   cont=true
@@ -67,24 +50,32 @@ function clear(direction)
   end
 end
 
-function fillDown()
+function fillDown(slot)
   if not turtle.detectDown() then
-    turtle.select(1)
+    turtle.select(slot)
     turtle.placeDown()
   end
 end
 
-print("How many blocks deep would the mine be?")
-nDeep=tonumber(io.read())
+function selectItem(name)
+-- check all inventory slots
+local item
+  for slot = 1, 16 do
+    item = turtle.getItemDetail(slot)
+    if item ~= nil and item['name'] == name then
+      turtle.select(slot)
+      return true
+    end
+end
 
 for i=1,nDeep do
-  clearUp()
+  clear('up')
   turtle.up()
-  clearUp()
+  clear('up')
   turtle.down()
   turtle.digDown()
   turtle.down()
-  fillDown()
-  clearForward()
+  fillDown(nSlot)
+  clear('forward')
   turtle.forward()
 end

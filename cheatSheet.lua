@@ -1,86 +1,18 @@
+-- Code for today's lesson:
 
+pastebin run xNztvMYg
 
-
-if turtle.detect() then
-  turtle.dig()
-end
-
-
-cont=true
-while cont do
-  if turtle.detectUp() then
-    turtle.digUp()
-  else
-    cont=false
-  end
-end
-
--- Other commands:
+turtle.detectDown()  -- returns "true" if something is below the turtle
+-- other detect commands
+turtle.detect()
 turtle.detectUp()
-turtle.detectDown()
-turtle.digUp()
-turtle.digDown()
 
+not turtle.detectDown() -- will return "true" if nothing is below the turtle!
 
+turtle.select(1) -- Selects turtle inventory, in this example it will select from the 1st slot
 
-for i=1,5 do
-    --turtle.digUp()
-    cont=true
-    while cont do
-      if turtle.detectUp() then
-        turtle.digUp()
-      else
-        cont=false
-      end
-    end
+turtle.placeDown()
 
-    turtle.up()
-    --turtle.digUp()
-    turtle.down()
-    turtle.digDown()
-    turtle.down()
-    --turtle.dig()
-    turtle.forward()
-end
-
-
-
-
-
-for i=1,5 do
-  --turtle.digUp()
-  cont=true
-  while cont do
-    if turtle.detectUp() then
-      turtle.digUp()
-    else
-      cont=false
-    end
-  end
-  turtle.up()
-
-  -- turtle.digUp()
-  cont=true
-  while cont do
-    if turtle.detectUp() then
-      turtle.digUp()
-    else
-      cont=false
-    end
-  end
-
-  turtle.down()
-  turtle.digDown()
-  turtle.down()
-
-  -- turtle.dig()
-  cont=true
-  while cont do
-    if turtle.detect() then
-      turtle.dig()
-    else
-      cont=false
-    end
-  end
-  turtle.forward()
-end
+-- Previous code to add a variable depth location
+print("How many blocks deep would the mine be?")
+nDeep=tonumber(io.read())
