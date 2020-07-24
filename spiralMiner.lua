@@ -5,6 +5,8 @@
 -- Code Setup Area
 
 local fillSlot=1
+local dist=1
+local sqSize=10
 
 -- Utility Functions
 function clear(direction)
@@ -60,15 +62,18 @@ function mineAll(fillSlot)
   end
   clear('up')
 
+  turtle.forward()
 end
 
+function invFull(fillMat)
+  -- check if inventory is full, if throw out all but one cobble stone
+
+end
 -- Main Code
 
 mineAll(fillSlot)
-turtle.forward()
 turtle.left()
-mineAll(fillSlot)
-turtle.forward()
+mineAll(fillSlot) dist=dist+1
 
 cont=true
 local i=1
@@ -77,10 +82,11 @@ while cont do
   for k=1,2 do
     turtle.left()
     for l=1,i do
-      mineAll(fillSlot)
-      
-
-
-
-
+      if dist >= sqSize*sqSize or invFull() then
+        cont=false
+      else
+        mineAll(fillSlot) dist=dist+1
+      end
+    end
+  end
 end
