@@ -71,13 +71,12 @@ function invFull(fillMat)
 end
 -- Main Code
 
-mineAll(fillSlot)
+mineAll(fillSlot) dist=dist+1
 turtle.left()
 mineAll(fillSlot) dist=dist+1
 
+i=1
 cont=true
-local i=1
-local j=1
 while cont do
   for k=1,2 do
     turtle.left()
@@ -89,4 +88,5 @@ while cont do
       end
     end
   end
+  i=i+1
 end
