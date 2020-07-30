@@ -1,3 +1,30 @@
+print("How deep?")
+local nDeeep=tonumber(io.read())
+
+print("how many blocks on a side?")
+local sqaresize=tonumber(io.read())
+
+function nojunk()
+  local cob="minecraft:cobblestone"
+  local stone="minecraft:stone"
+  local dirt="minecraft:dirt"
+  local gravel="minecraft:gravel"
+  local sand="minecraft:sand"
+  local sandstone="minecraft:sandstone"
+  local dump=false
+  local item
+  for i=1,16 do
+      if not(turtle.getItemCount(i)==0) then
+        item=turtle.getItemDetail(i)
+        dump=(item.name==cob or item.name==stone or item.name==dirt or item.name==gravel or item.name==sand or item.name==sandstone)
+        if dump then
+          turtle.select(i)
+          turtle.drop()
+        end
+      end
+  end
+end
+
 function nocobblestone()
   cob="minecraft:cobblestone"
   local item
@@ -12,37 +39,25 @@ function nocobblestone()
   end
 end
 
-function clear(direction)
+function clearUp()
   cont=true
-  if direction == nil or direction == 'forward' then
-    -- Loop to interate until space in front of turtle is clear
-    while cont do
-      if turtle.detect() then
-        turtle.dig()
-      else
-        cont=false
-      end
+  while cont do
+    if turtle.detectUp() then
+      turtle.digUp()
+    else
+      cont=false
     end
-  elseif direction == 'up' then
-    -- Loop to interate until space in above turtle is clear
-    while cont do
-      if turtle.detectUp() then
-        turtle.digUp()
-      else
-        cont=false
-      end
+  end
+end
+
+function clear()
+  cont=true
+  while cont do
+    if turtle.detect() then
+      turtle.dig()
+    else
+      cont=false
     end
-  elseif direction == 'down' then
-    -- Loop to interate until space in below turtle is clear
-    while cont do
-      if turtle.detectDown() then
-        turtle.digDown()
-      else
-        cont=false
-      end
-    end
-  else
-    error('function clear called incorrectly')
   end
 end
 
@@ -56,17 +71,17 @@ function isodd(numb)
   end
 end
 
-print("How far down should the turtle start?")
-local nDeep=tonumber(io.read())
-
-print("How big should the squre be on each side")
-local sqSize=tonumber(io.read())
-
-for j=1,sqSize do
-  for i=1,sqSize do
-    clear('up')
-    clear('forward')
-    clear('down')
+-- turtle goes down nDeeep levels
+for v=1,nDeeep do
+  turtle.digDown()
+  turtle.down()
+end
+-- turtle mines out the square
+for j=1,sqaresize do
+  for i=1,sqaresize do
+    clearUp()
+    clear()
+    turtle.digDown()
     turtle.forward()
   end
 
@@ -76,16 +91,27 @@ for j=1,sqSize do
     turtle.turnLeft()
   end
 
-  clear('up')
-  clear('forward')
-  clear('down')
+  clearUp()
+  clear()
+  turtle.digDown()
   turtle.forward()
-  nocobblestone()
+  nojunk()
 
   if isodd(j) then
     turtle.turnRight()
   else
     turtle.turnLeft()
   end
+end
 
+-- turtle goes back to starting point
+turtle.turnLeft()
+for k=1,sqaresize+1 do
+  turtle.forward()
+end
+
+-- turtle goes back up.
+for o=1,nDeeep do
+  turtle.digUp()
+  turtle.up()
 end
