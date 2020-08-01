@@ -31,7 +31,7 @@ function orgInv()
     print('Checking Slot Number'..i)
     turtle.select(i)
     for j=1,16 do
-      if not i==j then
+      if not(i==j) then
         print('Checking slot '..j..' against slot '..i)
         if turtle.compare(j) then
           turtle.select(j)
