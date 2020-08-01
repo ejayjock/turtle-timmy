@@ -25,6 +25,21 @@ function nojunk()
   end
 end
 
+function orgInv()
+  for i=1,16 do
+    turtle.select(i)
+    for j=1,16 do
+      if not i==j then
+        if turtle.compare(j) then
+          turtle.select(j)
+          turtle.transferTo(i)
+          turtle.select(i)
+        end
+      end
+    end
+  end
+end
+
 function clearUp()
   cont=true
   while cont do
@@ -81,6 +96,7 @@ for j=1,sqaresize do
   clear()
   turtle.digDown()
   while not turtle.forward() do end
+  orgInv()
   nojunk()
 
   if isodd(j) then
