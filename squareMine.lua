@@ -26,10 +26,13 @@ function nojunk()
 end
 
 function orgInv()
+  print('Organizing Inventory Slots')
   for i=1,16 do
+    print('Checking Slot Number'..i)
     turtle.select(i)
     for j=1,16 do
       if not i==j then
+        print('Checking slot '..j..' against slot '..i)
         if turtle.compare(j) then
           turtle.select(j)
           turtle.transferTo(i)
