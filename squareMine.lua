@@ -4,6 +4,26 @@ local nDeeep=tonumber(io.read())
 print("how many blocks on a side?")
 local sqaresize=tonumber(io.read())
 
+function selectItem(itemName)
+  local cont=true
+  local i=1
+  while cont do
+    if turtle.getItemCount(i)>0 then
+      if turtle.getItemDetail(i).name==itemName then
+        turtle.select(i)
+        cont=false
+        return true
+      end
+    end
+    i=i+1
+    if i==16 and cont then
+      print("Warning Item "..itemName.." not found in inventory!")
+      cont = false
+      return false
+    end
+  end
+end
+
 function nojunk()
   local cob="minecraft:cobblestone"
   local stone="minecraft:stone"
@@ -76,6 +96,23 @@ function isodd(numb)
   end
 end
 
+-- Returns true if the inventory is full
+function invenCheck()
+  local emptySlots=0
+  for i=1,16 do
+    if turtle.getItemCount(i)==0 then
+      emptySlots=emptySlots+1
+    end
+  end
+
+  -- If 1 or less slots are empty
+  if emptySlots>1 then
+    return false
+  else
+    return true
+  end
+end
+
 -- turtle goes down nDeeep levels
 for v=1,nDeeep do
   turtle.digDown()
@@ -100,8 +137,10 @@ for j=1,sqaresize do
   clear()
   turtle.digDown()
   while not turtle.forward() do end
-  orgInv()
   nojunk()
+  if invenCheck() then  --check if inventory is full
+    orgInv() -- consolodate similar inventory
+  end
 
   if isodd(j) then
     turtle.turnRight()
