@@ -32,12 +32,13 @@ function orgInv()
     turtle.select(i)
     for j=1,16 do
       if not(i==j) then
-        print('Checking slot '..j..' against slot '..i)
-        if turtle.compareTo(j) then
-          turtle.select(j)
-          turtle.transferTo(i)
-          turtle.select(i)
-        end
+        if turtle.getItemCount()>0 then
+          if turtle.compareTo(j) then
+            turtle.select(j)
+            turtle.transferTo(i)
+            turtle.select(i)
+          end
+      end
       end
     end
   end
