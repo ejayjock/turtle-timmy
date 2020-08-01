@@ -25,20 +25,6 @@ function nojunk()
   end
 end
 
-function nocobblestone()
-  cob="minecraft:cobblestone"
-  local item
-  for i=1,16 do
-      item=turtle.getItemDetail(i)
-      if not(turtle.getItemCount(i)==0) then
-        if item.name==cob then
-          turtle.select(i)
-          turtle.drop()
-        end
-      end
-  end
-end
-
 function clearUp()
   cont=true
   while cont do
@@ -82,7 +68,7 @@ for j=1,sqaresize do
     clearUp()
     clear()
     turtle.digDown()
-    turtle.forward()
+    while not turtle.forward() do end
   end
 
   if isodd(j) then
@@ -94,7 +80,7 @@ for j=1,sqaresize do
   clearUp()
   clear()
   turtle.digDown()
-  turtle.forward()
+  while not turtle.forward() do end
   nojunk()
 
   if isodd(j) then
@@ -107,7 +93,7 @@ end
 -- turtle goes back to starting point
 turtle.turnLeft()
 for k=1,sqaresize+1 do
-  turtle.forward()
+  while not turtle.forward() do end
 end
 
 -- turtle goes back up.
