@@ -144,6 +144,9 @@ for h=1,4 do
     turtle.digDown()
     while not(turtle.forward()) do end
     nojunk()
+    if invenCheck() then
+      orgInv()
+    end
 
     if isodd(j) then
       turtle.turnRight()
