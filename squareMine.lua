@@ -4,6 +4,9 @@ local nDeeep=tonumber(io.read())
 print("how many blocks on a side?")
 local sqaresize=tonumber(io.read())
 
+-- Selects inventory slot of name passed in.
+-- If material is found it returns a true.
+-- If material is not found it returns a false
 function selectItem(itemName)
   local cont=true
   local i=1
@@ -24,6 +27,7 @@ function selectItem(itemName)
   end
 end
 
+-- Gets rid of non-valuable materials while mining
 function nojunk()
   local cob="minecraft:cobblestone"
   local stone="minecraft:stone"
@@ -45,6 +49,7 @@ function nojunk()
   end
 end
 
+-- function to look through inventory and stack items where possible.
 function orgInv()
   print('Organizing Inventory Slots')
   for i=1,16 do
@@ -58,12 +63,13 @@ function orgInv()
             turtle.transferTo(i)
             turtle.select(i)
           end
-      end
+        end
       end
     end
   end
 end
 
+-- keeps digging the block above it until it is clear
 function clearUp()
   cont=true
   while cont do
@@ -75,6 +81,7 @@ function clearUp()
   end
 end
 
+-- keeps digging the block in front of it until it is clear
 function clear()
   cont=true
   while cont do
@@ -86,6 +93,7 @@ function clear()
   end
 end
 
+-- Returns true if the number passed in is odd
 function isodd(numb)
   -- Will return true if numb is odd, and false if it is even.
   tst=math.fmod(numb,2)
