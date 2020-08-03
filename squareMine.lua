@@ -1,33 +1,13 @@
+-- Section 1: User input needed for the code to run --------
+
 print("How deep?")
 local nDeeep=tonumber(io.read())
 
 print("how many blocks on a side?")
 local sqaresize=tonumber(io.read())
 
--- Selects inventory slot of name passed in.
--- If material is found it returns a true.
--- If material is not found it returns a false
-function selectItem(itemName)
-  local cont=true
-  local i=1
-  while cont do
-    if turtle.getItemCount(i)>0 then
-      if turtle.getItemDetail(i).name==itemName then
-        turtle.select(i)
-        cont=false
-        return true
-      end
-    end
-    i=i+1
-    if i==16 and cont then
-      print("Warning Item "..itemName.." not found in inventory!")
-      cont = false
-      return false
-    end
-  end
-end
+-- Section 2: Utility Functions ----------------------------
 
--- Gets rid of non-valuable materials while mining
 function nojunk()
   local cob="minecraft:cobblestone"
   local stone="minecraft:stone"
@@ -49,7 +29,58 @@ function nojunk()
   end
 end
 
--- function to look through inventory and stack items where possible.
+function clearUp()
+  cont=true
+  while cont do
+    if turtle.detectUp() then
+      turtle.digUp()
+    else
+      cont=false
+    end
+  end
+end
+
+function clear()
+  cont=true
+  while cont do
+    if turtle.detect() then
+      turtle.dig()
+    else
+      cont=false
+    end
+  end
+end
+
+-- If input numb is odd it will return a True
+function isodd(numb)
+  -- Will return true if numb is odd, and false if it is even.
+  tst=math.fmod(numb,2)
+  if tst==1 then
+    return true
+  else
+    return false
+  end
+end
+
+-- Checks to see if inventory is approaching full
+-- It will return True if 1 or less slots are available
+function invenCheck()
+  local emptySlots=0
+  for i=1,16 do
+    if turtle.getItemCount(i)==0 then
+      emptySlots=emptySlots+1
+    end
+  end
+
+  -- If 1 or less slots are empty
+  if emptySlots>1 then
+    return false
+  else
+    return true
+  end
+end
+
+-- Stacks similar items to maximimize inventory space
 function orgInv()
   print('Organizing Inventory Slots')
   for i=1,16 do
@@ -69,70 +100,35 @@ function orgInv()
   end
 end
 
--- keeps digging the block above it until it is clear
-function clearUp()
-  cont=true
-  while cont do
-    if turtle.detectUp() then
-      turtle.digUp()
-    else
-      cont=false
-    end
-  end
+-- Section 3: Input Checking/correcting --------------------
+
+-- Code fails if square size is odd
+-- This will add one to the squaresize if it is odd
+if isodd(sqaresize) then
+  sqaresize = sqaresize+1
 end
 
--- keeps digging the block in front of it until it is clear
-function clear()
-  cont=true
-  while cont do
-    if turtle.detect() then
-      turtle.dig()
-    else
-      cont=false
-    end
-  end
+-- Fuel Check
+travelDist = 2*nDeeep + sqaresize*sqaresize
+if turtle.getFuelLevel()<travelDist then
+  error('Turtle does not have enough Fuel.')
 end
 
--- Returns true if the number passed in is odd
-function isodd(numb)
-  -- Will return true if numb is odd, and false if it is even.
-  tst=math.fmod(numb,2)
-  if tst==1 then
-    return true
-  else
-    return false
-  end
-end
+-- Section 4: Main code Starts HERE ------------------------
 
--- Returns true if the inventory is full
-function invenCheck()
-  local emptySlots=0
-  for i=1,16 do
-    if turtle.getItemCount(i)==0 then
-      emptySlots=emptySlots+1
-    end
-  end
-
-  -- If 1 or less slots are empty
-  if emptySlots>1 then
-    return false
-  else
-    return true
-  end
-end
-
--- turtle goes down nDeeep levels
+-- Part 1: turtle goes down nDeeep levels
 for v=1,nDeeep do
   turtle.digDown()
   turtle.down()
 end
--- turtle mines out the square
+
+-- Part 2: turtle mines out the square
 for j=1,sqaresize do
   for i=1,sqaresize do
     clearUp()
     clear()
     turtle.digDown()
-    while not turtle.forward() do end
+    turtle.forward()
   end
 
   if isodd(j) then
@@ -144,11 +140,8 @@ for j=1,sqaresize do
   clearUp()
   clear()
   turtle.digDown()
-  while not turtle.forward() do end
+  turtle.forward()
   nojunk()
-  if invenCheck() then  --check if inventory is full
-    orgInv() -- consolodate similar inventory
-  end
 
   if isodd(j) then
     turtle.turnRight()
@@ -157,13 +150,13 @@ for j=1,sqaresize do
   end
 end
 
--- turtle goes back to starting point
+-- Part 3: turtle goes back to starting point
 turtle.turnLeft()
 for k=1,sqaresize do
-  while not turtle.forward() do end
+  turtle.forward()
 end
 
--- turtle goes back up.
+-- Part 4: turtle goes back up.
 for o=1,nDeeep do
   turtle.digUp()
   turtle.up()
