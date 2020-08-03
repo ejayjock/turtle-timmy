@@ -109,7 +109,7 @@ if isodd(sqaresize) then
 end
 
 -- Fuel Check
-travelDist = 4*(2*nDeeep + sqaresize*sqaresize)
+travelDist = 2*nDeeep+4*(sqaresize*sqaresize + sqarsize)
 if turtle.getFuelLevel()<travelDist then
   error('Turtle does not have enough Fuel.')
 end
@@ -130,7 +130,7 @@ for h=1,4 do
       clearUp()
       clear()
       turtle.digDown()
-      turtle.forward()
+      while not(turtle.forward()) do end
     end
 
     if isodd(j) then
@@ -142,7 +142,7 @@ for h=1,4 do
     clearUp()
     clear()
     turtle.digDown()
-    turtle.forward()
+    while not(turtle.forward()) do end
     nojunk()
 
     if isodd(j) then
@@ -155,7 +155,7 @@ for h=1,4 do
   -- Part 3: turtle goes back to starting point
   turtle.turnLeft()
   for k=1,sqaresize do
-    turtle.forward()
+    while not(turtle.forward()) do end
   end
 end
 -- Part 4: turtle goes back up.
