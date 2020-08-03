@@ -63,7 +63,7 @@ function isodd(numb)
 end
 
 -- Checks to see if inventory is approaching full
--- It will return True if 1 or less slots are available
+-- It will return True if 4 or less slots are available
 function invenCheck()
   local emptySlots=0
   for i=1,16 do
@@ -72,8 +72,8 @@ function invenCheck()
     end
   end
 
-  -- If 1 or less slots are empty
-  if emptySlots>1 then
+  -- If 4 or less slots are empty
+  if emptySlots>4 then
     return false
   else
     return true
