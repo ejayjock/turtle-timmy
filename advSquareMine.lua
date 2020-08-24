@@ -9,18 +9,21 @@ local sqaresize=tonumber(io.read())
 -- Section 2: Utility Functions ----------------------------
 
 function nojunk()
-  local cob="minecraft:cobblestone"
-  local stone="minecraft:stone"
-  local dirt="minecraft:dirt"
-  local gravel="minecraft:gravel"
-  local sand="minecraft:sand"
-  local sandstone="minecraft:sandstone"
+  local ironOre="minecraft:iron_ore"
+  local redStone="minecraft:redstone"
+  local goldOre="minecraft:gold_ore"
+  local emerald="minecraft:emerald"
+  local coal="minecraft:coal"
+  local diamond="minecraft:diamond"
+  local obsidian="minecraft:obsidian"
+
   local dump=false
   local item
   for i=1,16 do
       if not(turtle.getItemCount(i)==0) then
         item=turtle.getItemDetail(i)
-        dump=(item.name==cob or item.name==stone or item.name==dirt or item.name==gravel or item.name==sand or item.name==sandstone)
+        dump=not(item.name==ironOre or item.name==redStone or item.name==goldOre or item.name==emerald or item.name==coal or item.name==diamond or
+             item.name==obsidian)
         if dump then
           turtle.select(i)
           turtle.drop()
