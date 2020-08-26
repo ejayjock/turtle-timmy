@@ -16,6 +16,7 @@ function nojunk()
   local coal="minecraft:coal"
   local diamond="minecraft:diamond"
   local obsidian="minecraft:obsidian"
+  local lapis="minecraft:lapis_lazuli"
 
   local dump=false
   local item
@@ -23,7 +24,7 @@ function nojunk()
       if not(turtle.getItemCount(i)==0) then
         item=turtle.getItemDetail(i)
         dump=not(item.name==ironOre or item.name==redStone or item.name==goldOre or item.name==emerald or item.name==coal or item.name==diamond or
-             item.name==obsidian)
+             item.name==obsidian or lapis)
         if dump then
           turtle.select(i)
           turtle.drop()
