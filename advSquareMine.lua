@@ -24,7 +24,7 @@ function nojunk()
       if not(turtle.getItemCount(i)==0) then
         item=turtle.getItemDetail(i)
         dump=not(item.name==ironOre or item.name==redStone or item.name==goldOre or item.name==emerald or item.name==coal or item.name==diamond or
-             item.name==obsidian or lapis)
+             item.name==obsidian or item.name==lapis)
         if dump then
           turtle.select(i)
           turtle.drop()
