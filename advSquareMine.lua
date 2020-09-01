@@ -104,6 +104,20 @@ function orgInv()
   end
 end
 
+-- Turtle attempts to move forward, if it fails after several attempts it will attempt to dig foward and continue.
+function goForward()
+  turtleMove=false
+  i=1
+  while not(turtleMove) do
+    turtleMove=turtle.forward()
+    i=i+1
+    if i==5 then
+      turtle.dig()
+      i=1
+    end
+  end
+end
+
 -- Section 3: Input Checking/correcting --------------------
 
 -- Code fails if square size is odd
@@ -134,7 +148,7 @@ for h=1,4 do
       clearUp()
       clear()
       turtle.digDown()
-      while not(turtle.forward()) do end
+      goForward()
     end
 
     if isodd(j) then
@@ -146,7 +160,7 @@ for h=1,4 do
     clearUp()
     clear()
     turtle.digDown()
-    while not(turtle.forward()) do end
+    goForward()
     nojunk()
     if invenCheck() then
       orgInv()
@@ -162,7 +176,7 @@ for h=1,4 do
   -- Part 3: turtle goes back to starting point
   turtle.turnLeft()
   for k=1,sqaresize do
-    while not(turtle.forward()) do end
+    goForward()
   end
 end
 -- Part 4: turtle goes back up.
