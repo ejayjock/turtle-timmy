@@ -110,8 +110,8 @@ function goForward()
   print('Moving Turtle Forward')
   turtleMove=turtle.forward()
   while turtleMove==false do
-    print('Turtle Movement Obstructed')
     i=i+1
+    print('Turtle Movement Obstructed ='..i)
     if i==5 then
       turtle.dig()
       i=1
