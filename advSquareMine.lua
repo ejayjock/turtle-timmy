@@ -86,9 +86,9 @@ end
 
 -- Stacks similar items to maximimize inventory space
 function orgInv()
-  print('Organizing Inventory Slots')
+  --print('Organizing Inventory Slots')
   for i=1,16 do
-    print('Checking Slot Number'..i)
+    --print('Checking Slot Number'..i)
     turtle.select(i)
     for j=1,16 do
       if not(i==j) then
@@ -106,15 +106,17 @@ end
 
 -- Turtle attempts to move forward, if it fails after several attempts it will attempt to dig foward and continue.
 function goForward()
-  turtleMove=false
   i=1
-  while not(turtleMove) do
-    turtleMove=turtle.forward()
+  print('Moving Turtle Forward')
+  turtleMove=turtle.forward()
+  while turtleMove==false do
+    print('Turtle Movement Obstructed')
     i=i+1
     if i==5 then
       turtle.dig()
       i=1
     end
+    turtleMove=turtle.forward()
   end
 end
 
