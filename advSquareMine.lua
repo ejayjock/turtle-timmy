@@ -107,7 +107,7 @@ end
 -- Turtle attempts to move forward, if it fails after several attempts it will attempt to dig foward and continue.
 function goForward()
   i=1
-  print('Moving Turtle Forward')
+  --print('Moving Turtle Forward')
   turtleMove=turtle.forward()
   while turtleMove==false do
     i=i+1
