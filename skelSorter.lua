@@ -5,15 +5,15 @@ function sortStuff()
   local bow = "minecraft:bow"
 
   -- grp2 -- armor for smelting
-  local gHlmt = "mincraft:golden_helmet"
+  local gHlmt = "minecraft:golden_helmet"
   local gChstPlt = "minecraft:golden_chestplate"
   local gPnts = "minecraft:golden_leggings"
   local gBts = "minecraft:golden_boots"
-  local cHlmt = "mincraft:chainmail_helmet"
+  local cHlmt = "minecraft:chainmail_helmet"
   local cChstPlt = "minecraft:chainmail_chestplate"
   local cPnts = "minecraft:chainmail_leggings"
   local cBts = "minecraft:chainmail_boots"
-  local iHlmt = "mincraft:iron_helmet"
+  local iHlmt = "minecraft:iron_helmet"
   local iChstPlt = "minecraft:iron_chestplate"
   local iPnts = "minecraft:iron_leggings"
   local iBts = "minecraft:iron_boots"
