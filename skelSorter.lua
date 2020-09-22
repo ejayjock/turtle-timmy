@@ -36,6 +36,7 @@ function sortStuff()
   local grp2=false
   local grp3=false
   local grp4=false
+  local grp5=false
   local goodDrop=true
   local item
   for i=1,16 do
@@ -45,6 +46,7 @@ function sortStuff()
       grp2=(item.name==gHlmt or item.name==gChstPlt or   item.name==gPnts or item.name==gBts or item.name==cHlmt or item.name==cChstPlt or   item.name==cPnts or item.name==cBts or item.name==iHlmt or item.name==iChstPlt or   item.name==iPnts or item.name==iBts)
       grp3=item.name==arrow
       grp4=item.name==bone
+      grp5=(item.name==lHlmt or item.name==lChstPlt or   item.name==lPnts or item.name==lBts)
 
       if grp1 then
         turtle.select(i)
@@ -70,7 +72,7 @@ function sortStuff()
         goodDrop=turtle.drop()
         turtle.turnRight()
         grp4=false
-      elseif grp5 then 
+      elseif grp5 then
         select(i)
         goodDrop=turtle.drop()
         grp5=false
