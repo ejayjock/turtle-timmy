@@ -12,6 +12,7 @@ function keepStuff()
 
   local grp1=false
   local grp2=false
+  local chstFull=false
   local item
   for i=1,16 do
       if not(turtle.getItemCount(i)==0) then
@@ -22,16 +23,24 @@ function keepStuff()
         if grp1 then
           turtle.select(i)
           turtle.turnLeft()
-          turtle.drop()
+          cstFull=turtle.drop()
           turtle.turnRight()
+          grp1=false
         elseif grp2 then
           turtle.select(i)
           turtle.turnRight()
-          turtle.drop()
+          cstFull=turtle.drop()
           turtle.turnLeft()
+          grp2=false
         else
           turtle.select(i)
           turtle.dropDown()
+        end
+
+        if cstFull then
+          select(i)
+          turtle.dropDown()
+          cstFull=false
         end
       end
   end
