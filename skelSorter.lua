@@ -75,7 +75,7 @@ function sortStuff()
       elseif grp5 then
         select(i)
         goodDrop=turtle.drop()
-        grp5=false
+        grp5=false  
       end
 
       if not(goodDrop) then
