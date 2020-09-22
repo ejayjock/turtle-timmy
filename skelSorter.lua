@@ -37,7 +37,7 @@ function sortStuff()
       item=turtle.getItemDetail(i)
       grp1=(item.name==bow)
       grp2=(item.name==gHlmt or item.name==gChstPlt or   item.name==gPnts or item.name==gBts or item.name==cHlmt or item.name==cChstPlt or   item.name==cPnts or item.name==cBts or item.name==iHlmt or item.name==iChstPlt or   item.name==iPnts or item.name==iBts)
-      grp3=item.name==arrows
+      grp3=item.name==arrow
       grp4=item.name==bone
 
       if grp1 then
