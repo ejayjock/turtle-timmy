@@ -12,7 +12,7 @@ function keepStuff()
 
   local grp1=false
   local grp2=false
-  local chstFull=false
+  local goodDrop=true
   local item
   for i=1,16 do
     print("Function Keep Stuff, Loop: "..i)
@@ -24,13 +24,13 @@ function keepStuff()
       if grp1 then
         turtle.select(i)
         turtle.turnLeft()
-        cstFull=turtle.drop()
+        goodDrop=turtle.drop()
         turtle.turnRight()
         grp1=false
       elseif grp2 then
         turtle.select(i)
         turtle.turnRight()
-        cstFull=turtle.drop()
+        goodDrop=turtle.drop()
         turtle.turnLeft()
         grp2=false
       else
@@ -38,7 +38,7 @@ function keepStuff()
         turtle.dropDown()
       end
 
-      if cstFull then
+      if not(goodDrop) then
         select(i)
         turtle.dropDown()
         cstFull=false
