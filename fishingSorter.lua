@@ -15,39 +15,41 @@ function keepStuff()
   local chstFull=false
   local item
   for i=1,16 do
-      if not(turtle.getItemCount(i)==0) then
-        item=turtle.getItemDetail(i)
-        grp1=(item.name==eBook)
-        grp2=(item.name==bow or item.name==fRod or item.name==bowl or item.name==leather or item.name==pFish or
-             item.name==tFish or item.name==nameTag)
-        if grp1 then
-          turtle.select(i)
-          turtle.turnLeft()
-          cstFull=turtle.drop()
-          turtle.turnRight()
-          grp1=false
-        elseif grp2 then
-          turtle.select(i)
-          turtle.turnRight()
-          cstFull=turtle.drop()
-          turtle.turnLeft()
-          grp2=false
-        else
-          turtle.select(i)
-          turtle.dropDown()
-        end
-
-        if cstFull then
-          select(i)
-          turtle.dropDown()
-          cstFull=false
-        end
+    print("Function Keep Stuff, Loop: "..i)
+    if not(turtle.getItemCount(i)==0) then
+      item=turtle.getItemDetail(i)
+      grp1=(item.name==eBook)
+      grp2=(item.name==bow or item.name==fRod or item.name==bowl or item.name==leather or item.name==pFish or
+           item.name==tFish or item.name==nameTag)
+      if grp1 then
+        turtle.select(i)
+        turtle.turnLeft()
+        cstFull=turtle.drop()
+        turtle.turnRight()
+        grp1=false
+      elseif grp2 then
+        turtle.select(i)
+        turtle.turnRight()
+        cstFull=turtle.drop()
+        turtle.turnLeft()
+        grp2=false
+      else
+        turtle.select(i)
+        turtle.dropDown()
       end
+
+      if cstFull then
+        select(i)
+        turtle.dropDown()
+        cstFull=false
+      end
+    end
   end
 end
 
 local go = true
 
 while go do
+  print("Entering Function keepStuff")
   keepStuff()
 end
