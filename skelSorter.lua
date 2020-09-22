@@ -81,5 +81,5 @@ while go do
   print("Executing function sortStuff")
   sortStuff()
   print("Sleeping")
-  sleep(5)
+  sleep(20)
 end
