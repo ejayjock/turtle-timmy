@@ -15,7 +15,6 @@ function keepStuff()
   local goodDrop=true
   local item
   for i=1,16 do
-    print("Function Keep Stuff, Loop: "..i)
     if not(turtle.getItemCount(i)==0) then
       item=turtle.getItemDetail(i)
       grp1=(item.name==eBook)
