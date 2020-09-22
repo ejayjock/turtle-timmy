@@ -24,6 +24,12 @@ function sortStuff()
   -- grp 4 -- arrows
   local bone = "minecraft:bone"
 
+  -- grp5 -- leather armor
+  local lHlmt = "minecraft:leather_helmet"
+  local lChstPlt = "minecraft:leather_chestplate"
+  local lPnts = "minecraft:leather_leggings"
+  local lBts = "minecraft:leather_boots"
+
 
 
   local grp1=false
@@ -64,6 +70,10 @@ function sortStuff()
         goodDrop=turtle.drop()
         turtle.turnRight()
         grp4=false
+      elseif grp5 then 
+        select(i)
+        goodDrop=turtle.drop()
+        grp5=false
       end
 
       if not(goodDrop) then
