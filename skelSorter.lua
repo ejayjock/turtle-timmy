@@ -44,8 +44,8 @@ function sortStuff()
       item=turtle.getItemDetail(i)
       grp1=(item.name==bow)
       grp2=(item.name==gHlmt or item.name==gChstPlt or   item.name==gPnts or item.name==gBts or item.name==cHlmt or item.name==cChstPlt or   item.name==cPnts or item.name==cBts or item.name==iHlmt or item.name==iChstPlt or   item.name==iPnts or item.name==iBts)
-      grp3=item.name==arrow
-      grp4=item.name==bone
+      grp3=(item.name==arrow)
+      grp4=(item.name==bone)
       grp5=(item.name==lHlmt or item.name==lChstPlt or   item.name==lPnts or item.name==lBts)
 
       if grp1 then
@@ -74,7 +74,7 @@ function sortStuff()
         grp4=false
       elseif grp5 then
         turtle.select(i)
-        goodDrop=turtle.drop()
+        goodDrop=turtle.dropDown()
         grp5=false
       end
 
